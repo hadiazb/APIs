@@ -1,19 +1,23 @@
 var contenido = document.querySelector('#contenido')
 function traer() {
-    fetch('texto.txt')
-    .then(data  => data.text())
+    fetch('https://randomuser.me/api/')
+    .then(res  => res.json())
     .then(data  =>{
-        // console.log(data)
-        contenido.innerHTML = `${data}`
+        console.log(data.results['0'].email);
+        
+        contenido.innerHTML = `<img src="${data.results['0'].picture.large}" alt=""width="100" class="img-fluid rounded-circle">
+        <p>Nombre:<span>   </span>${data.results['0'].name.first} <span>   </span> ${data.results['0'].name.last}</p>`
     })
 } 
 
-// var sistema = function (parametro) {
-//     return parametro.nombre >= mayor
+// var nombre = function (parametro) {
+//     return parametro.propiedad >= mayor
 // }
 
-// var sistema = (parametro) => {
-//     return parametro.nombre >= mayor
+// var nombre = (parametro) => {
+//     return parametro.propiedad >= mayor
 // }
 
-// const sistema = parametro => parametro.nombre;
+// const nombre = parametro => parametro.propiedad >= mayor;
+
+// const nombre = ({propiedad}) => propiedad >= mayor;
